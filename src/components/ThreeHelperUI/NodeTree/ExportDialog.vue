@@ -104,8 +104,8 @@ const handleExport = () => {
                 <div class="grid grid-cols-5 items-center gap-3">
                     <div class="text-right  flex items-center justify-end col-span-2">
                         <Label for="fileName">fileName</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.fileName">?</span>
+                        <div class="tooltip  ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.fileName">?</div>
                     </div>
                     <Input id="fileName" v-model="exportOptions.fileName" class="col-span-3 h-7 " />
                 </div>
@@ -114,8 +114,8 @@ const handleExport = () => {
                 <div class="grid grid-cols-5 items-center gap-3">
                     <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>binary</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.binary">?</span>
+                        <div class="tooltip  ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.binary">?</div>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.binary = true"
@@ -123,8 +123,7 @@ const handleExport = () => {
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.binary = false"
-                            :variant="!exportOptions.binary ? 'default' : 'ghost'"
-                            class="h-6  px-3 min-w-[40px]">
+                            :variant="!exportOptions.binary ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -134,8 +133,8 @@ const handleExport = () => {
                 <div class="grid grid-cols-5 items-center gap-3">
                     <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>trs</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.trs">?</span>
+                        <div class="tooltip  ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.trs">?</div>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.trs = true"
@@ -153,18 +152,16 @@ const handleExport = () => {
                 <div class="grid grid-cols-5 items-center gap-3">
                     <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>onlyVisible</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.onlyVisible">?</span>
+                        <div class="tooltip  ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.onlyVisible">?</div>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.onlyVisible = true"
-                            :variant="exportOptions.onlyVisible ? 'default' : 'ghost'"
-                            class="h-6  px-3 min-w-[40px]">
+                            :variant="exportOptions.onlyVisible ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.onlyVisible = false"
-                            :variant="!exportOptions.onlyVisible ? 'default' : 'ghost'"
-                            class="h-6  px-3 min-w-[40px]">
+                            :variant="!exportOptions.onlyVisible ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -174,8 +171,8 @@ const handleExport = () => {
                 <div class="grid grid-cols-5 items-center gap-3">
                     <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>truncateDrawRange</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.truncateDrawRange">?</span>
+                        <div class="tooltip ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.truncateDrawRange">?</div>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.truncateDrawRange = true"
@@ -195,18 +192,16 @@ const handleExport = () => {
                 <div class="grid grid-cols-5 items-center gap-3">
                     <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>embedImages</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.embedImages">?</span>
+                        <div class="tooltip  ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.embedImages">?</div>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.embedImages = true"
-                            :variant="exportOptions.embedImages ? 'default' : 'ghost'"
-                            class="h-6  px-3 min-w-[40px]">
+                            :variant="exportOptions.embedImages ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.embedImages = false"
-                            :variant="!exportOptions.embedImages ? 'default' : 'ghost'"
-                            class="h-6  px-3 min-w-[40px]">
+                            :variant="!exportOptions.embedImages ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -216,39 +211,39 @@ const handleExport = () => {
                 <div class="grid grid-cols-5 items-center gap-3" v-if="exportOptions.embedImages">
                     <div class="text-right  flex items-center justify-end col-span-2">
                         <Label for="maxTextureSize">maxTextureSize</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.maxTextureSize">?</span>
+                        <div class="tooltip  ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.maxTextureSize">?</div>
                     </div>
-                    <Select v-model="exportOptions.maxTextureSize" class="col-span-3">
-                        <SelectTrigger id="maxTextureSize" class="h-7 ">
-                            <SelectValue
-                                :placeholder="exportOptions.maxTextureSize === 'Infinity' ? '无限制' : exportOptions.maxTextureSize" />
-                        </SelectTrigger>
-                        <SelectContent class="">
-                            <SelectItem v-for="option in textureSizeOptions" :key="option.value" :value="option.value"
-                                class="">
-                                {{ option.label }}
-                            </SelectItem>
-                        </SelectContent>
-                    </Select>
+                    <div class="col-span-2">
+                        <Select v-model="exportOptions.maxTextureSize">
+                            <SelectTrigger id="maxTextureSize" class="h-7 ">
+                                <SelectValue
+                                    :placeholder="exportOptions.maxTextureSize === 'Infinity' ? '无限制' : exportOptions.maxTextureSize" />
+                            </SelectTrigger>
+                            <SelectContent class="">
+                                <SelectItem v-for="option in textureSizeOptions" :key="option.value"
+                                    :value="option.value" class="">
+                                    {{ option.label }}
+                                </SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
                 </div>
 
                 <!-- 强制索引 -->
                 <div class="grid grid-cols-5 items-center gap-3">
                     <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>forceIndices</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.forceIndices">?</span>
+                        <div class="tooltip  ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.forceIndices">?</div>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.forceIndices = true"
-                            :variant="exportOptions.forceIndices ? 'default' : 'ghost'"
-                            class="h-6  px-3 min-w-[40px]">
+                            :variant="exportOptions.forceIndices ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.forceIndices = false"
-                            :variant="!exportOptions.forceIndices ? 'default' : 'ghost'"
-                            class="h-6  px-3 min-w-[40px]">
+                            :variant="!exportOptions.forceIndices ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -258,8 +253,8 @@ const handleExport = () => {
                 <div class="grid grid-cols-5 items-center gap-3">
                     <div class="text-right  flex items-center justify-end col-span-2 whitespace-nowrap">
                         <Label>includeCustomExtensions</Label>
-                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
-                            :data-tip="optionDescriptions.includeCustomExtensions">?</span>
+                        <div class="tooltip  ml-1 text-gray-400 text-[12px] cursor-help"
+                            :data-tip="optionDescriptions.includeCustomExtensions">?</div>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.includeCustomExtensions = true"
@@ -305,23 +300,26 @@ const handleExport = () => {
     width: 12px;
     height: 12px;
     line-height: 12px;
+    padding: 2px;
     text-align: center;
 }
 
 .tooltip:hover::after {
     content: attr(data-tip);
+    display: block;
     position: absolute;
     left: 50%;
     top: 100%;
     transform: translateX(-50%);
+    font-size: 16px;
     z-index: 50;
     white-space: nowrap;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
-    padding: 4px 8px;
+    padding: 20px;
     border-radius: 4px;
     font-weight: normal;
     pointer-events: none;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 </style>

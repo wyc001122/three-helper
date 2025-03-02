@@ -8,6 +8,7 @@ const props = defineProps<{
 const showName = computed(() => {
     return props.data.name && props.data.geometry && props.data.material
 })
+
 </script>
 
 <template>

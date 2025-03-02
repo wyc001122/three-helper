@@ -22,7 +22,7 @@ function createThreeHelper(configs: Configs = {}) {
 
     window.__THREE_HELPER_APP__ = createApp(ThreeHelperUI, {
         renderers: configs.renderers || window.__THREE_RENDERERS__,
-        scene: configs.scenes || window.__THREE_SCENES__,
+        scenes: configs.scenes || window.__THREE_SCENES__,
     });
     window.__THREE_HELPER_APP__.use(loadPlugin).mount(root);
 }

@@ -2,7 +2,7 @@ const animate = require("tailwindcss-animate")
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  // prefix: 'th-',
+  // prefix: '',
   darkMode: ["class"],
   safelist: ["dark"],
   content: [

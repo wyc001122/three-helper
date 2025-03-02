@@ -2,10 +2,10 @@
 import { ref, computed, onBeforeUnmount } from 'vue'
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '@/components/ui/context-menu'
 import { getConstantName } from '../utils/constant'
-import { 
-  TextureValue, 
-  HTMLElementValue, 
-  ObjectValue, 
+import {
+  TextureValue,
+  HTMLElementValue,
+  ObjectValue,
   PrimitiveValue,
   isHTMLElement,
   isTexture,
@@ -80,7 +80,7 @@ const copyValue = () => {
 // 复制常量名到剪贴板
 const copyConstantName = () => {
   if (constantName.value) {
-    navigator.clipboard.writeText('THREE.'+constantName.value)
+    navigator.clipboard.writeText('THREE.' + constantName.value)
   }
 }
 
@@ -126,7 +126,8 @@ hasChange()
   <div class="prop-field text-[12px]">
     <ContextMenu>
       <ContextMenuTrigger>
-        <div class="text-[12px] flex items-center py-[2px] rounded-md hover:bg-accent cursor-pointer font-mono whitespace-nowrap"
+        <div
+          class="text-[12px] flex items-center py-[2px] rounded-md hover:bg-accent cursor-pointer font-mono whitespace-nowrap"
           :style="{ paddingLeft: indent }" @click="toggleExpand">
           <!-- 展开/折叠箭头 -->
           <span v-if="hasChildren && !isHTMLElementValue" class="mr-1 w-4 inline-flex items-center">
@@ -146,25 +147,15 @@ hasChange()
           <span :key="refreshKey" class="truncate max-w-[300px]" :title="String(rawData[label])">
             <!-- 纹理类型 -->
             <TextureValue v-if="isTextureValue" :value="value" />
-            
+
             <!-- HTML元素类型 -->
             <HTMLElementValue v-else-if="isHTMLElementValue" :value="value" />
-            
+
             <!-- 对象/数组类型 -->
-            <ObjectValue 
-              v-else-if="hasChildren" 
-              :value="value" 
-              :valueType="valueType" 
-              :isExpanded="isExpanded" 
-            />
-            
+            <ObjectValue v-else-if="hasChildren" :value="value" :valueType="valueType" :isExpanded="isExpanded" />
+
             <!-- 基本类型 -->
-            <PrimitiveValue 
-              v-else 
-              :value="value" 
-              :valueType="valueType" 
-              :constantName="constantName" 
-            />
+            <PrimitiveValue v-else :value="value" :valueType="valueType" :constantName="constantName" />
           </span>
         </div>
       </ContextMenuTrigger>
@@ -188,7 +179,8 @@ hasChange()
         :value="value[childKey]" :level="level + 1" :value-type="getValueType(value[childKey])" :rawData="value" />
 
       <!-- 显示加载更多按钮 -->
-      <div v-if="remainingCount > 0" class="text-[12px] flex items-center py-[2px] cursor-pointer text-blue-500 hover:text-blue-600"
+      <div v-if="remainingCount > 0"
+        class="text-[12px] flex items-center py-[2px] cursor-pointer text-blue-500 hover:text-blue-600"
         :style="{ paddingLeft: indent }" @click="loadMore">
         <span class="mr-1 w-4"></span>
         <span class="">···还有 {{ remainingCount }} 项，点击加载更多</span>

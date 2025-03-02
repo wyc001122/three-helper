@@ -1,5 +1,11 @@
 <script lang='ts' setup>
 import { computed } from 'vue'
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger
+} from '@/components/ui/context-menu'
 
 const props = defineProps<{
   value: any
@@ -31,13 +37,49 @@ const tooltipInfo = computed(() => {
 UUID: ${texture.uuid || '无'}
 类型: ${texture.constructor?.name || 'Texture'}`
 })
+
+// 下载纹理图片
+function downloadTexture() {
+  if (!textureInfo.value.source) return
+
+  const link = document.createElement('a')
+  link.href = textureInfo.value.source
+  link.download = `${textureInfo.value.name || 'texture'}.png`
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+
+// 在新窗口预览纹理
+function previewTexture() {
+  if (!textureInfo.value.source) return
+  window.open(textureInfo.value.source, '_blank')
+}
+
+// 是图片
+const isImage = computed(() => {
+  return props.value.source?.data instanceof HTMLImageElement
+})
 </script>
 
 <template>
   <div v-if="textureInfo.source" class="flex items-center gap-1">
-    <img :src="textureInfo.source"
-      class="w-16 h-16 object-cover border border-gray-300 dark:border-gray-700 rounded-sm"
-      :title="tooltipInfo" />
+    <ContextMenu>
+      <ContextMenuTrigger>
+        <img :src="textureInfo.source"
+          class="w-16 h-16 object-cover border border-gray-300 dark:border-gray-700 rounded-sm cursor-pointer"
+          :title="tooltipInfo" />
+      </ContextMenuTrigger>
+
+      <ContextMenuContent class="w-40">
+        <ContextMenuItem @click="previewTexture" :disabled="!isImage">
+          <span class="text-xs">在新窗口预览</span>
+        </ContextMenuItem>
+        <ContextMenuItem @click="downloadTexture" :disabled="!isImage">
+          <span class="text-xs">下载纹理</span>
+        </ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
   </div>
   <span v-else class="text-[12px] text-[#267f99] dark:text-[#4EC9B0]" :title="tooltipInfo">{{ formattedText }}</span>
-</template> 
+</template>

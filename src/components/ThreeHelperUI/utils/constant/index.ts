@@ -31,6 +31,13 @@ import {
     Color_Space
 } from './Texture'
 
+
+import {
+    CULL_FACE_MODES,
+    SHADOW_TYPES,
+    TONE_MAPPING
+} from './WebGLRenderer'
+
 const material_key_value: any = {
     blendDst: SOURCE_FACTORS,
     blendEquation: BLENDING_EQUATIONS,
@@ -56,12 +63,26 @@ const texture_key_value: any = {
     colorSpace: Color_Space,
 }
 
+
+const webgl_renderer_key_value: any = {
+    cullFace: CULL_FACE_MODES,
+    shadowType: SHADOW_TYPES,
+    toneMapping: TONE_MAPPING,
+    _outputColorSpace: Color_Space,
+}
+
+
+
+
 export function getConstantName(object: any, key: string, value: any) {
     if (object.isMaterial && material_key_value[key]) {
         return material_key_value[key][value]
     }
     if (object.isTexture && texture_key_value[key]) {
         return texture_key_value[key][value]
+    }
+    if (object.isWebGLRenderer && webgl_renderer_key_value[key]) {
+        return webgl_renderer_key_value[key][value]
     }
 }
 
