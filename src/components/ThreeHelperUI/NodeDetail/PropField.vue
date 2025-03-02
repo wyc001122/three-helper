@@ -100,26 +100,8 @@ const consoleLog = () => {
     )
   }
 }
+ 
 
-// 监听值变化
-let refreshKey = ref(0)
-let oldV: any;
-let timer: any;
-function hasChange() {
-  if (oldV !== props.rawData[props.label]) {
-    refreshKey.value++
-  }
-  oldV = props.rawData[props.label]
-  timer = setTimeout(() => {
-    hasChange()
-  }, 500);
-}
-
-onBeforeUnmount(() => {
-  timer && clearTimeout(timer)
-})
-
-hasChange()
 </script>
 
 <template>
@@ -144,7 +126,7 @@ hasChange()
           <span class="text-[#000000] dark:text-[#D4D4D4] mx-1">:</span>
 
           <!-- 属性值 - 使用拆分后的组件 -->
-          <span :key="refreshKey" class="truncate max-w-[300px]" :title="String(rawData[label])">
+          <span  class="truncate max-w-[300px]" :title="String(rawData[label])">
             <!-- 纹理类型 -->
             <TextureValue v-if="isTextureValue" :value="value" />
 
@@ -155,7 +137,7 @@ hasChange()
             <ObjectValue v-else-if="hasChildren" :value="value" :valueType="valueType" :isExpanded="isExpanded" />
 
             <!-- 基本类型 -->
-            <PrimitiveValue v-else :value="value" :valueType="valueType" :constantName="constantName" />
+            <PrimitiveValue v-else :label="label"  :value="value" :valueType="valueType" :constantName="constantName" :rawData="rawData" />
           </span>
         </div>
       </ContextMenuTrigger>

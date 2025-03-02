@@ -1,24 +1,31 @@
 <script lang='ts' setup>
-import { computed } from 'vue'
+import { computed, ref, onBeforeUnmount } from 'vue'
 
 const props = defineProps<{
   value: any,
+  label: string,
   valueType: string,
   constantName?: string
+  rawData?: any
 }>()
 
 // 格式化基本类型值的显示
 const formattedValue = computed(() => {
+  const value = props.rawData[props.label];
+  // if (refreshKey.value < 0) {
+  //   return
+  // }
+  refreshKey.value
   if (props.constantName) {
-    return `${props.constantName}(${props.value})`
+    return `${props.constantName}(${value})`
   }
 
-  if (props.valueType === 'string') return `"${props.value}"`
+  if (props.valueType === 'string') return `"${value}"`
   if (props.valueType === 'undefined') return 'undefined'
   if (props.valueType === 'null') return 'null'
   if (props.valueType === 'function') return 'ƒ () { ... }'
 
-  return String(props.value)
+  return String(value)
 })
 
 // 根据类型确定CSS类名
@@ -46,8 +53,28 @@ const tooltipInfo = computed(() => {
   // 根据不同类型提供不同的提示
   return String(props.value)
 })
+
+// 监听值变化
+let refreshKey = ref(1)
+let oldV: any;
+let timer: any;
+function hasChange() {
+  if (oldV !== props.rawData[props.label]) {
+    refreshKey.value++
+  }
+  oldV = props.rawData[props.label]
+  timer = setTimeout(() => {
+    hasChange()
+  }, 500);
+}
+
+onBeforeUnmount(() => {
+  timer && clearTimeout(timer)
+})
+
+hasChange()
 </script>
 
 <template>
-  <span :class="valueClass" :title="tooltipInfo" class=text-[12px]>{{ formattedValue }}</span>
+  <span :class="valueClass" :title="tooltipInfo" class="text-[12px]" :key="refreshKey">{{ formattedValue }}</span>
 </template>

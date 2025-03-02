@@ -106,10 +106,17 @@ onMounted(() => {
 onBeforeUnmount(() => {
     window.removeEventListener('contextmenu', contextmenu)
 })
+
+// 阻止滚轮事件冒泡
+function handleWheel(e: WheelEvent) {
+  e.stopPropagation()
+}
 </script>
 
 <template>
-    <div ref="containerRef" class="three-helper-ui max-h-[800px] flex gap-2" @contextmenu="(e) => e.preventDefault()">
+    <div ref="containerRef" class="three-helper-ui max-h-[800px] flex gap-2" 
+        @contextmenu="(e) => e.preventDefault()"
+        @wheel="handleWheel">
         <Card class="w-[300px] flex flex-col h-fit">
             <CardHeader class="p-1.5 border-b flex move-handler cursor-move">
                 <CardTitle class="leading-none w-full px-1.5">
@@ -198,7 +205,7 @@ onBeforeUnmount(() => {
                 </CardTitle>
             </CardHeader>
             <ScrollArea class="h-full" type="auto">
-                <CardContent class="p-2">
+                <CardContent class="p-2 h-fit">
                     <NodeDetail />
                 </CardContent>
                 <ScrollBar orientation="horizontal" />
