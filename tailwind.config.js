@@ -2,9 +2,9 @@ const animate = require("tailwindcss-animate")
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  // prefix: 'th-',
   darkMode: ["class"],
   safelist: ["dark"],
-  prefix: "",
   content: [
     './pages/**/*.{ts,tsx,vue}',
     './components/**/*.{ts,tsx,vue}',
