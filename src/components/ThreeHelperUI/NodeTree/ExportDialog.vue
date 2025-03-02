@@ -102,29 +102,29 @@ const handleExport = () => {
             <div class="space-y-4 py-2">
                 <!-- 文件名 -->
                 <div class="grid grid-cols-5 items-center gap-3">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2">
+                    <div class="text-right  flex items-center justify-end col-span-2">
                         <Label for="fileName">fileName</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.fileName">?</span>
                     </div>
-                    <Input id="fileName" v-model="exportOptions.fileName" class="col-span-3 h-7 text-xs" />
+                    <Input id="fileName" v-model="exportOptions.fileName" class="col-span-3 h-7 " />
                 </div>
 
                 <!-- 二进制格式 -->
                 <div class="grid grid-cols-5 items-center gap-3">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2">
+                    <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>binary</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.binary">?</span>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.binary = true"
-                            :variant="exportOptions.binary ? 'default' : 'ghost'" class="h-6 text-xs px-3 min-w-[40px]">
+                            :variant="exportOptions.binary ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.binary = false"
                             :variant="!exportOptions.binary ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -132,18 +132,18 @@ const handleExport = () => {
 
                 <!-- TRS -->
                 <div class="grid grid-cols-5 items-center gap-3">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2">
+                    <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>trs</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.trs">?</span>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.trs = true"
-                            :variant="exportOptions.trs ? 'default' : 'ghost'" class="h-6 text-xs px-3 min-w-[40px]">
+                            :variant="exportOptions.trs ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.trs = false"
-                            :variant="!exportOptions.trs ? 'default' : 'ghost'" class="h-6 text-xs px-3 min-w-[40px]">
+                            :variant="!exportOptions.trs ? 'default' : 'ghost'" class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -151,20 +151,20 @@ const handleExport = () => {
 
                 <!-- 仅可见对象 -->
                 <div class="grid grid-cols-5 items-center gap-3">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2">
+                    <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>onlyVisible</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.onlyVisible">?</span>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.onlyVisible = true"
                             :variant="exportOptions.onlyVisible ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.onlyVisible = false"
                             :variant="!exportOptions.onlyVisible ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -172,20 +172,20 @@ const handleExport = () => {
 
                 <!-- 截断绘制范围 -->
                 <div class="grid grid-cols-5 items-center gap-3">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2">
+                    <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>truncateDrawRange</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.truncateDrawRange">?</span>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.truncateDrawRange = true"
                             :variant="exportOptions.truncateDrawRange ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.truncateDrawRange = false"
                             :variant="!exportOptions.truncateDrawRange ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -193,20 +193,20 @@ const handleExport = () => {
 
                 <!-- 嵌入图像 -->
                 <div class="grid grid-cols-5 items-center gap-3">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2">
+                    <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>embedImages</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.embedImages">?</span>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.embedImages = true"
                             :variant="exportOptions.embedImages ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.embedImages = false"
                             :variant="!exportOptions.embedImages ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -214,19 +214,19 @@ const handleExport = () => {
 
                 <!-- 最大纹理尺寸 -->
                 <div class="grid grid-cols-5 items-center gap-3" v-if="exportOptions.embedImages">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2">
+                    <div class="text-right  flex items-center justify-end col-span-2">
                         <Label for="maxTextureSize">maxTextureSize</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.maxTextureSize">?</span>
                     </div>
                     <Select v-model="exportOptions.maxTextureSize" class="col-span-3">
-                        <SelectTrigger id="maxTextureSize" class="h-7 text-xs">
+                        <SelectTrigger id="maxTextureSize" class="h-7 ">
                             <SelectValue
                                 :placeholder="exportOptions.maxTextureSize === 'Infinity' ? '无限制' : exportOptions.maxTextureSize" />
                         </SelectTrigger>
-                        <SelectContent class="text-xs">
+                        <SelectContent class="">
                             <SelectItem v-for="option in textureSizeOptions" :key="option.value" :value="option.value"
-                                class="text-xs">
+                                class="">
                                 {{ option.label }}
                             </SelectItem>
                         </SelectContent>
@@ -235,20 +235,20 @@ const handleExport = () => {
 
                 <!-- 强制索引 -->
                 <div class="grid grid-cols-5 items-center gap-3">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2">
+                    <div class="text-right  flex items-center justify-end col-span-2">
                         <Label>forceIndices</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.forceIndices">?</span>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.forceIndices = true"
                             :variant="exportOptions.forceIndices ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.forceIndices = false"
                             :variant="!exportOptions.forceIndices ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -256,20 +256,20 @@ const handleExport = () => {
 
                 <!-- 包含自定义扩展 -->
                 <div class="grid grid-cols-5 items-center gap-3">
-                    <div class="text-right text-xs flex items-center justify-end col-span-2 whitespace-nowrap">
+                    <div class="text-right  flex items-center justify-end col-span-2 whitespace-nowrap">
                         <Label>includeCustomExtensions</Label>
-                        <span class="tooltip text-xs ml-1 text-gray-400 text-[10px] cursor-help"
+                        <span class="tooltip  ml-1 text-gray-400 text-[10px] cursor-help"
                             :data-tip="optionDescriptions.includeCustomExtensions">?</span>
                     </div>
                     <div class="col-span-3 flex space-x-2">
                         <Button type="button" @click="exportOptions.includeCustomExtensions = true"
                             :variant="exportOptions.includeCustomExtensions ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             true
                         </Button>
                         <Button type="button" @click="exportOptions.includeCustomExtensions = false"
                             :variant="!exportOptions.includeCustomExtensions ? 'default' : 'ghost'"
-                            class="h-6 text-xs px-3 min-w-[40px]">
+                            class="h-6  px-3 min-w-[40px]">
                             false
                         </Button>
                     </div>
@@ -277,8 +277,8 @@ const handleExport = () => {
             </div>
 
             <DialogFooter class="mt-5">
-                <Button variant="ghost" @click="closeDialog" class="h-7 text-xs px-4">取消</Button>
-                <Button @click="handleExport" class="h-7 text-xs px-4 ml-2">导出</Button>
+                <Button variant="ghost" @click="closeDialog" class="h-7  px-4">取消</Button>
+                <Button @click="handleExport" class="h-7  px-4 ml-2">导出</Button>
             </DialogFooter>
         </DialogContent>
     </Dialog>

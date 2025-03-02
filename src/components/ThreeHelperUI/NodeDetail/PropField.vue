@@ -170,13 +170,13 @@ hasChange()
       </ContextMenuTrigger>
 
       <ContextMenuContent>
-        <ContextMenuItem @click="copyValue" class="text-xs leading-1 cursor-pointer">
+        <ContextMenuItem @click="copyValue" class=" leading-1 cursor-pointer">
           {{ constantName ? '复制实际值' : '复制值' }}
         </ContextMenuItem>
-        <ContextMenuItem v-if="constantName" @click="copyConstantName" class="text-xs leading-1 cursor-pointer">
+        <ContextMenuItem v-if="constantName" @click="copyConstantName" class=" leading-1 cursor-pointer">
           复制常量名
         </ContextMenuItem>
-        <ContextMenuItem @click="consoleLog" class="text-xs leading-1 cursor-pointer">
+        <ContextMenuItem @click="consoleLog" class=" leading-1 cursor-pointer">
           输出到控制台
         </ContextMenuItem>
       </ContextMenuContent>
@@ -191,7 +191,7 @@ hasChange()
       <div v-if="remainingCount > 0" class="flex items-center py-[2px] cursor-pointer text-blue-500 hover:text-blue-600"
         :style="{ paddingLeft: indent }" @click="loadMore">
         <span class="mr-1 w-4"></span>
-        <span class="text-xs">···还有 {{ remainingCount }} 项，点击加载更多</span>
+        <span class="">···还有 {{ remainingCount }} 项，点击加载更多</span>
       </div>
     </template>
   </div>

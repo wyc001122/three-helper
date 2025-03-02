@@ -1,4 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
+import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
@@ -18,5 +19,25 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    terserOptions: {
+      format: {
+        comments: false,
+      },
+    },
+    lib: {
+      entry: resolve(__dirname, 'src/main.ts'),
+      name: 'ThreeHelper',
+      fileName: 'ThreeHelper',
+    },
+    rollupOptions: {
+    },
+
+  },
+  define: {
+    'process.env': {},
   }
 })

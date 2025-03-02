@@ -61,7 +61,7 @@ const expandAll = () => {
       }" :class="{
         'bg-accent': activeNode === data
       }" @click="activeNode = data"
-        class="mb-[2px] select-none w-full flex relative px-[8px] pr-[22px] py-1 cursor-pointer leading-[10px] rounded-md text-xs hover:bg-accent">
+        class="mb-[2px] select-none w-full flex relative px-[8px] pr-[22px] py-1 cursor-pointer leading-[10px] rounded-md  hover:bg-accent">
         <!-- 左 -->
         <div class="flex items-center pl-[6px] pr-[20px] w-full gap-1">
           <NodeArrow v-model="isExpanded" :data="data" />
@@ -75,11 +75,11 @@ const expandAll = () => {
       </div>
     </ContextMenuTrigger>
     <ContextMenuContent>
-      <ContextMenuItem v-if="data.children.length" @click="expandAll" class="text-xs leading-1 cursor-pointer">
+      <ContextMenuItem v-if="data.children && data.children.length" @click="expandAll" class=" leading-1 cursor-pointer">
         {{ isExpanded ? '收起全部' : '展开全部' }}
       </ContextMenuItem>
-      <ContextMenuItem @click="consoleNode(data)" class="text-xs leading-1 cursor-pointer">输出到控制台</ContextMenuItem>
-      <ContextMenuItem v-if="data.isObject3D" @click="openExportDialog" class="text-xs leading-1 cursor-pointer">导出
+      <ContextMenuItem @click="consoleNode(data)" class=" leading-1 cursor-pointer">输出到控制台</ContextMenuItem>
+      <ContextMenuItem v-if="data.isObject3D" @click="openExportDialog" class=" leading-1 cursor-pointer">导出
       </ContextMenuItem>
     </ContextMenuContent>
   </ContextMenu>
@@ -87,13 +87,13 @@ const expandAll = () => {
   <!-- 导出配置对话框 -->
   <ExportDialog v-model:isOpen="showExportDialog" :data="data" @export="handleExport" />
 
-  <div class="text-xs" v-if="isExpanded">
+  <div class="" v-if="isExpanded">
     <!-- 几何体 -->
     <Node v-if="data.geometry" :data="data.geometry" :level="level + 1" />
     <!-- 材质 -->
     <Node v-if="data.material" :data="data.material" :level="level + 1" />
     <!-- children -->
-    <template v-if="data.children" ref="childrenContainer">
+    <template v-if="data.children && data.children.length" ref="childrenContainer">
       <Node v-for="item in data.children" :data="item" :level="(level + 1)" :key="data.uuid" />
     </template>
   </div>

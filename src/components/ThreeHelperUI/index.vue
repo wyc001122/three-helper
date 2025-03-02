@@ -82,10 +82,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div ref="containerRef" class="max-h-[800px] flex gap-2" @contextmenu="(e) => e.preventDefault()">
+    <div ref="containerRef" class="three-helper-ui max-h-[800px] flex gap-2" @contextmenu="(e) => e.preventDefault()">
         <Card class="w-[300px] flex flex-col h-fit">
             <CardHeader class="p-1.5 border-b flex move-handler cursor-move">
-                <CardTitle class="text-xs leading-none w-full px-1.5">
+                <CardTitle class=" leading-none w-full px-1.5">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-1">
                             <Move :size="iconSize"></Move>
@@ -106,7 +106,7 @@ onBeforeUnmount(() => {
         </Card>
         <Card class="w-[400px] flex flex-col" v-if="!!activeNode">
             <CardHeader class="p-1.5 border-b flex h-fit">
-                <CardTitle class="text-xs leading-none flex items-center justify-between gap-1 px-1.5">
+                <CardTitle class=" leading-none flex items-center justify-between gap-1 px-1.5">
                     <span>节点信息</span>
                     <div :style="{ width: iconSize + 'px', height: iconSize + 'px' }" class="cursor-pointer "
                         @click="activeNode = null">
@@ -124,3 +124,11 @@ onBeforeUnmount(() => {
         </Card>
     </div>
 </template>
+<style lang="scss">
+.three-helper-ui {
+    * {
+        font-size: 12px;
+        // line-height: 1.25;
+    }
+}
+</style>

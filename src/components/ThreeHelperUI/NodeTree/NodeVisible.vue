@@ -35,7 +35,7 @@ function toggleVisible() {
                     <EyeClosed v-else :size="iconSize" />
                 </TooltipTrigger>
                 <TooltipContent>
-                    <div class="text-xs">可见性</div>
+                    <div class="">可见性</div>
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>

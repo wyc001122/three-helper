@@ -51,7 +51,7 @@ const iconSize = inject('iconSize') as number
                     
                 </TooltipTrigger>
                 <TooltipContent>
-                    <div class="text-xs">按住shift展开全部children</div>
+                    <div class="">按住shift展开全部children</div>
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
