@@ -49,5 +49,5 @@ const tooltipInfo = computed(() => {
 </script>
 
 <template>
-  <span :class="valueClass" :title="tooltipInfo">{{ formattedValue }}</span>
+  <span :class="valueClass" :title="tooltipInfo" class=text-[12px]>{{ formattedValue }}</span>
 </template>

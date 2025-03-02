@@ -123,10 +123,10 @@ hasChange()
 </script>
 
 <template>
-  <div class="prop-field text-sm">
+  <div class="prop-field text-[12px]">
     <ContextMenu>
       <ContextMenuTrigger>
-        <div class="flex items-center py-[2px] rounded-md hover:bg-accent cursor-pointer font-mono whitespace-nowrap"
+        <div class="text-[12px] flex items-center py-[2px] rounded-md hover:bg-accent cursor-pointer font-mono whitespace-nowrap"
           :style="{ paddingLeft: indent }" @click="toggleExpand">
           <!-- 展开/折叠箭头 -->
           <span v-if="hasChildren && !isHTMLElementValue" class="mr-1 w-4 inline-flex items-center">
@@ -188,7 +188,7 @@ hasChange()
         :value="value[childKey]" :level="level + 1" :value-type="getValueType(value[childKey])" :rawData="value" />
 
       <!-- 显示加载更多按钮 -->
-      <div v-if="remainingCount > 0" class="flex items-center py-[2px] cursor-pointer text-blue-500 hover:text-blue-600"
+      <div v-if="remainingCount > 0" class="text-[12px] flex items-center py-[2px] cursor-pointer text-blue-500 hover:text-blue-600"
         :style="{ paddingLeft: indent }" @click="loadMore">
         <span class="mr-1 w-4"></span>
         <span class="">···还有 {{ remainingCount }} 项，点击加载更多</span>

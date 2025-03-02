@@ -41,7 +41,7 @@ const iconSize = inject('iconSize') as number
 </script>
 
 <template>
-    <div :style="{ width: iconSize + 'px' }" class="cursor-pointer">
+    <div :style="{ width: iconSize + 'px' }" class="text-[12px] cursor-pointer">
         <TooltipProvider v-if="hasExpand">
             <Tooltip>
                 <TooltipTrigger as-child>

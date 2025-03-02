@@ -27,7 +27,7 @@ function toggleVisible() {
 </script>
 
 <template>
-    <div v-if="data.visible !== undefined" :style="{ width: iconSize + 'px', height: iconSize + 'px' }" @click.stop="toggleVisible" class="box-content p-[4px]">
+    <div v-if="data.visible !== undefined" :style="{ width: iconSize + 'px', height: iconSize + 'px' }" @click.stop="toggleVisible" class="text-[12px] box-content p-[4px]">
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger as-child>

@@ -50,5 +50,5 @@ const elementDetails = computed(() => {
 </script>
 
 <template>
-  <span class="text-[#267f99] dark:text-[#4EC9B0]" :title="elementDetails">&lt;{{ tagName }}&gt;</span>
+  <span class="text-[12px] text-[#267f99] dark:text-[#4EC9B0]" :title="elementDetails">&lt;{{ tagName }}&gt;</span>
 </template> 

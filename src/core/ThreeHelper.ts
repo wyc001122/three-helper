@@ -17,7 +17,7 @@ function createThreeHelper(configs: Configs = {}) {
 
     const root = document.createElement("div");
     root.id = "three-helper";
-    root.style.cssText = `position: fixed;top: 10px;left: 10px;`
+    root.style.cssText = `position: fixed;top: 10px;left: 10px;z-index:10`
     document.body.appendChild(root);
 
     window.__THREE_HELPER_APP__ = createApp(ThreeHelperUI, {

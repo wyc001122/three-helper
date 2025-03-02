@@ -6,7 +6,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="px-[4px] py-[2px] flex justify-center items-center">
+    <div class="text-[12px] px-[4px] py-[2px] flex justify-center items-center">
         {{ data.type }}
     </div>
 </template>

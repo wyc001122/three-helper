@@ -11,7 +11,7 @@ const showName = computed(() => {
 </script>
 
 <template>
-    <div :title="data.name || 'unknown'" class="flex-1 overflow-hidden truncate" v-if="showName">
+    <div :title="data.name || 'unknown'" class="text-[12px] flex-1 overflow-hidden truncate" v-if="showName">
         {{ data.name || 'unknown' }}
     </div>
 </template>

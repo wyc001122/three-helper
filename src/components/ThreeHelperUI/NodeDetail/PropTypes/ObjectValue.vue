@@ -80,7 +80,7 @@ const objectDetails = computed(() => {
 </script>
 
 <template>
-  <span class="text-[#001080] dark:text-[#9CDCFE]" :title="objectDetails">
+  <span class="text-[12px] text-[#001080] dark:text-[#9CDCFE]" :title="objectDetails">
     {{ formattedValue }}
     <span v-if="!isExpanded" class="text-[#919191] dark:text-[#6B6B6B]">
       {{ ` // ${childrenCount}` }}

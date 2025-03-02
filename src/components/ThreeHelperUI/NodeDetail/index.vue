@@ -18,7 +18,7 @@ const getValueType = (value: any): string => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-[2px] px-[6px] h-full font-mono overflow-x-auto w-max">
+  <div class="text-[12px] flex flex-col gap-[2px] px-[6px] h-full font-mono overflow-x-auto w-max">
     <div class="" v-for="(value, key) in activeNode" :key="String(key)">
       <PropField :label="String(key)" :value="value" :level="0" :value-type="getValueType(value)" :rawData="activeNode">
       </PropField>

@@ -39,5 +39,5 @@ UUID: ${texture.uuid || '无'}
       class="w-16 h-16 object-cover border border-gray-300 dark:border-gray-700 rounded-sm"
       :title="tooltipInfo" />
   </div>
-  <span v-else class="text-[#267f99] dark:text-[#4EC9B0]" :title="tooltipInfo">{{ formattedText }}</span>
+  <span v-else class="text-[12px] text-[#267f99] dark:text-[#4EC9B0]" :title="tooltipInfo">{{ formattedText }}</span>
 </template> 
