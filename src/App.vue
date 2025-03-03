@@ -19,7 +19,7 @@ let cube2: THREE.Mesh
 let cube3: THREE.Mesh
 let cube4: THREE.Mesh
 const clock = new THREE.Clock()
-onMounted(() => {
+onMounted(async () => {
   scene = new THREE.Scene()
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
   camera.position.z = 5
@@ -54,35 +54,54 @@ onMounted(() => {
   cube3.position.set(0, 0, 1)
   group.add(cube3)
 
+
+
+  const _texture =await new THREE.TextureLoader().loadAsync(new URL('./assets/environment-map.jpg', import.meta.url).href)
+  _texture.colorSpace = THREE.SRGBColorSpace
+  _texture.flipY = true
+  const pmremGenerator = new THREE.PMREMGenerator(renderer);
+  pmremGenerator.compileCubemapShader();
+  const envMap = pmremGenerator.fromEquirectangular(_texture).texture
+  pmremGenerator.dispose()
+  envMap.type = THREE.UnsignedByteType
+
+  // 定义材质 
+  const material4 = new THREE.MeshStandardMaterial({
+    metalness: 1,
+    roughness: 0.29,
+    color: new THREE.Color("#c1c1c1"),
+    emissive: new THREE.Color("#faa238"),
+    emissiveIntensity: 0,
+    transparent: true
+  })
+  material4.envMap = envMap
+
   const texture = new THREE.TextureLoader().load('night.webp')
   texture.colorSpace = THREE.SRGBColorSpace
-  const material4 = new THREE.MeshBasicMaterial({ map: texture })
   cube4 = new THREE.Mesh(new THREE.BoxGeometry(), material4)
+  cube4.name = 'cube4'
   cube4.position.set(-1, 0, 0)
   group.add(cube4)
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
+  group.add(cube4.clone())
 
   const textureHelper = new TextureHelper(texture)
   textureHelper.name = 'textureHelper'
   textureHelper.position.set(2, 0, 0)
-  scene.add(textureHelper)
+  scene.add(textureHelper) 
 
-
-  // 写一个简单的shadermaterial
-  const shaderMaterial = new THREE.ShaderMaterial({
-    vertexShader: `
-      void main() {
-        gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
-      }
-    `,
-    fragmentShader: `
-      void main() {
-        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-      }
-    `,
-  })
-  const shaderMesh = new THREE.Mesh(new THREE.BoxGeometry(), shaderMaterial)
-  shaderMesh.position.set(0, 0, 3)
-  scene.add(shaderMesh)
 
   animate()
 

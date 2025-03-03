@@ -99,8 +99,7 @@ const consoleLog = () => {
       constantName.value ? `(${constantName.value})` : ''
     )
   }
-}
- 
+} 
 
 </script>
 

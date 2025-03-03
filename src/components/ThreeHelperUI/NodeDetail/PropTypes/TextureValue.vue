@@ -60,6 +60,10 @@ function previewTexture() {
 const isImage = computed(() => {
   return props.value.source?.data instanceof HTMLImageElement
 })
+
+const isCubeTexture = computed(() => {
+  return props.value.isCubeTexture === true
+})
 </script>
 
 <template>
@@ -76,7 +80,7 @@ const isImage = computed(() => {
           <span class="text-xs">在新窗口预览</span>
         </ContextMenuItem>
         <ContextMenuItem @click="downloadTexture" :disabled="!isImage">
-          <span class="text-xs">下载纹理</span>
+          <span class="text-xs">下载保存</span>
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>

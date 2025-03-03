@@ -114,10 +114,10 @@ function handleWheel(e: WheelEvent) {
 </script>
 
 <template>
-    <div ref="containerRef" class="three-helper-ui max-h-[800px] flex gap-2" 
+    <div ref="containerRef" class="three-helper-ui flex gap-2 items-start" 
         @contextmenu="(e) => e.preventDefault()"
         @wheel="handleWheel">
-        <Card class="w-[300px] flex flex-col h-fit">
+        <Card class="w-[300px] flex flex-col shrink-0">
             <CardHeader class="p-1.5 border-b flex move-handler cursor-move">
                 <CardTitle class="leading-none w-full px-1.5">
                     <div class="flex items-center justify-between">
@@ -146,7 +146,7 @@ function handleWheel(e: WheelEvent) {
             </div>
 
             <!-- 场景管理内容 -->
-            <div v-if="activeType === 'scenes'">
+            <div v-if="activeType === 'scenes'" class="flex-1 overflow-hidden flex flex-col">
                 <div class="px-2 pt-1 pb-1" v-if="scenes.length > 1">
                     <Select v-model="selectedSceneIndex">
                         <SelectTrigger class="h-6 text-xs py-0 px-2 w-full">
@@ -161,16 +161,18 @@ function handleWheel(e: WheelEvent) {
                     </Select>
                 </div>
 
-                <ScrollArea type="auto" class="max-h-[600px]">
-                    <CardContent class="p-2 h-fit">
-                        <NodeTree v-if="currentScene" :data="[currentScene]" />
-                        <div v-else class="text-muted-foreground text-center py-2">没有可用场景</div>
+                <div class="flex-1 min-h-0 overflow-auto max-h-[80vh] custom-scrollbar">
+                    <CardContent class="p-2">
+                        <div class="node-tree-wrapper">
+                            <NodeTree v-if="currentScene" :data="[currentScene]" />
+                            <div v-else class="text-muted-foreground text-center py-2">没有可用场景</div>
+                        </div>
                     </CardContent>
-                </ScrollArea>
+                </div>
             </div>
 
             <!-- 渲染器管理内容 -->
-            <div v-else-if="activeType === 'renderers'">
+            <div v-else-if="activeType === 'renderers'" class="flex-1 overflow-hidden flex flex-col">
                 <div class="px-2 pt-1 pb-1" v-if="renderers.length > 1">
                     <Select v-model="selectedRendererIndex">
                         <SelectTrigger class="h-6 text-xs py-0 px-2 w-full">
@@ -185,16 +187,18 @@ function handleWheel(e: WheelEvent) {
                     </Select>
                 </div>
 
-                <ScrollArea type="auto" class="max-h-[600px]">
-                    <CardContent class="p-2 h-fit">
-                        <NodeTree v-if="currentRenderer" :data="[currentRenderer]" />
-                        <div v-else class="text-muted-foreground text-center py-2">没有可用渲染器</div>
+                <div class="flex-1 min-h-0 overflow-auto max-h-[80vh] custom-scrollbar">
+                    <CardContent class="p-2">
+                        <div class="node-tree-wrapper">
+                            <NodeTree v-if="currentRenderer" :data="[currentRenderer]" />
+                            <div v-else class="text-muted-foreground text-center py-2">没有可用渲染器</div>
+                        </div>
                     </CardContent>
-                </ScrollArea>
+                </div>
             </div>
         </Card>
 
-        <Card class="w-[400px] flex flex-col" v-if="!!activeNode">
+        <Card class="w-[400px] flex flex-col h-auto max-h-[90vh]" v-if="!!activeNode">
             <CardHeader class="p-1.5 border-b flex h-fit">
                 <CardTitle class="leading-none flex items-center justify-between gap-1 px-1.5">
                     <span>节点信息</span>
@@ -204,13 +208,11 @@ function handleWheel(e: WheelEvent) {
                     </div>
                 </CardTitle>
             </CardHeader>
-            <ScrollArea class="h-full" type="auto">
-                <CardContent class="p-2 h-fit">
+            <div class="flex-1 min-h-0 overflow-auto max-h-[80vh] custom-scrollbar">
+                <CardContent class="p-2">
                     <NodeDetail />
                 </CardContent>
-                <ScrollBar orientation="horizontal" />
-                <ScrollBar orientation="vertical" />
-            </ScrollArea>
+            </div>
         </Card>
     </div>
 </template>
@@ -218,7 +220,43 @@ function handleWheel(e: WheelEvent) {
 .three-helper-ui {
     * {
         font-size: 12px;
-        // line-height: 1.25;
+    }
+    
+    .node-tree-wrapper {
+        width: 100%;
+        height: auto;
+        min-width: 240px; /* 确保内容有最小宽度，触发水平滚动 */
+    }
+    
+    // 确保左侧卡片容器不被撑开
+    > .card:first-child {
+        height: fit-content;
+        min-height: auto;
+        overflow: visible;
+    }
+    
+    // 自定义滚动条样式
+    .custom-scrollbar {
+        /* 滚动条轨道 */
+        &::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        /* 滚动条滑块 */
+        &::-webkit-scrollbar-thumb {
+            background: rgba(155, 155, 155, 0.5);
+            border-radius: 4px;
+            
+            &:hover {
+                background: rgba(155, 155, 155, 0.8);
+            }
+        }
+        
+        /* 滚动条轨道背景 */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
     }
 }
 </style>
